@@ -55,4 +55,12 @@ public class AllureModelTest {
         AllureUtils.write(testGroupResult, outputDir);
         assertThat(outputDir, hasFilesCount(1, AllureConstants.TEST_GROUP_JSON_FILE_GLOB));
     }
+
+    @Test
+    public void shouldNotFailIfNoSuchOutputDirectory() throws Exception {
+        Path outputDir = folder.newFolder().toPath().resolve("unknown");
+        TestCaseResult testCaseResult = new TestCaseResult();
+        AllureUtils.write(testCaseResult, outputDir);
+        assertThat(outputDir, hasFilesCount(1, AllureConstants.TEST_CASE_JSON_FILE_GLOB));
+    }
 }

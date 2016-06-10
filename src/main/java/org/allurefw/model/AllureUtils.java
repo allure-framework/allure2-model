@@ -51,6 +51,12 @@ public final class AllureUtils {
     }
 
     private static void write(Object object, String fileName, Path outputDirectory) {
+        try {
+            Files.createDirectories(outputDirectory);
+        } catch (IOException e) {
+            LOGGER.error("Could not create output directory: {}", e);
+        }
+
         Path file = outputDirectory.resolve(fileName);
         try (OutputStream outputStream = Files.newOutputStream(file)) {
             createMapper().writeValue(outputStream, object);
