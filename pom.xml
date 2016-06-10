@@ -15,9 +15,49 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <compiler.version>1.8</compiler.version>
         <slf4j.version>1.7.12</slf4j.version>
     </properties>
+
+    <name>Allure2 Model</name>
+
+    <organization>
+        <name>qameta.io</name>
+        <url>http://qameta.io</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/allurefw/allure2-model</url>
+        <connection>scm:git@github.com:allurefw/allure2-model.git</connection>
+        <developerConnection>scm:git:git@github.com:allurefw/allure2-model.git</developerConnection>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/allurefw/allure2-model/issues</url>
+    </issueManagement>
+
+    <ciManagement>
+        <system>Jenkins</system>
+        <url>http://ci.allurefw.org/</url>
+    </ciManagement>
+
+
+    <mailingLists>
+        <mailingList>
+            <name>Allure Mailing list</name>
+            <post>feedback@allurefw.org</post>
+        </mailingList>
+    </mailingLists>
 
     <build>
         <plugins>
