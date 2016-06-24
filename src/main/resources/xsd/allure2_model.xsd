@@ -43,6 +43,8 @@
                 <xsd:sequence>
                     <xsd:element name="id" type="xsd:string"/>
                     <xsd:element name="testGroupId" type="xsd:string"/>
+                    <xsd:element name="status" type="ns:Status"/>
+                    <xsd:element name="statusDetails" type="ns:StatusDetails" minOccurs="0"/>
                     <xsd:element name="parameters" type="ns:Parameters" minOccurs="0"/>
                     <xsd:element name="befores" type="ns:Befores" minOccurs="0"/>
                     <xsd:element name="afters" type="ns:Afters" minOccurs="0"/>
@@ -81,10 +83,10 @@
     <xsd:complexType name="ExecutableItem" abstract="true">
         <xsd:sequence>
             <xsd:element name="name" type="xsd:string"/>
-            <xsd:element name="description" type="xsd:string"/>
-            <xsd:element name="descriptionHtml" type="xsd:string"/>
-            <xsd:element name="steps" type="ns:Steps"/>
-            <xsd:element name="attachments" type="ns:Attachments"/>
+            <xsd:element name="description" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="descriptionHtml" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="steps" type="ns:Steps" minOccurs="0"/>
+            <xsd:element name="attachments" type="ns:Attachments" minOccurs="0"/>
         </xsd:sequence>
         <xsd:attribute name="start" type="xsd:long"/>
         <xsd:attribute name="stop" type="xsd:long"/>
