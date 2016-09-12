@@ -1,4 +1,4 @@
-package org.allurefw.model;
+package io.qameta.allure;
 
 /**
  * @author charlie (Dmitry Baev).

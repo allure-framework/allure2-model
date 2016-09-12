@@ -5,22 +5,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>ru.qatools</groupId>
+        <groupId>io.qameta</groupId>
         <artifactId>opensource-parent</artifactId>
-        <version>1.2</version>
+        <version>1.3</version>
     </parent>
 
-    <groupId>org.allurefw</groupId>
-    <artifactId>allure2-model</artifactId>
+    <groupId>io.qameta.allure</groupId>
+    <artifactId>model-v2</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <compiler.version>1.8</compiler.version>
-        <slf4j.version>1.7.12</slf4j.version>
+        <slf4j.version>1.7.21</slf4j.version>
     </properties>
 
-    <name>Allure2 Model</name>
+    <name>Allure Model v2</name>
 
     <organization>
         <name>qameta.io</name>
@@ -48,9 +46,8 @@
 
     <ciManagement>
         <system>Jenkins</system>
-        <url>http://ci.allurefw.org/</url>
+        <url>https://ci.qameta.in/</url>
     </ciManagement>
-
 
     <mailingLists>
         <mailingList>

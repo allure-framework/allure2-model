@@ -1,4 +1,4 @@
-package org.allurefw.model;
+package io.qameta.allure;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.MapperFeature;
@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector;
+import io.qameta.allure.model.TestCaseResult;
+import io.qameta.allure.model.TestGroupResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.qatools.properties.PropertyLoader;
@@ -16,8 +18,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.UUID;
 
-import static org.allurefw.model.AllureConstants.TEST_CASE_JSON_FILE_SUFFIX;
-import static org.allurefw.model.AllureConstants.TEST_GROUP_JSON_FILE_SUFFIX;
+import static io.qameta.allure.AllureConstants.TEST_CASE_JSON_FILE_SUFFIX;
+import static io.qameta.allure.AllureConstants.TEST_GROUP_JSON_FILE_SUFFIX;
 
 /**
  * @author Dmitry Baev charlie@yandex-team.ru

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified"
             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            xmlns:ns="urn:model.allurefw.org"
-            targetNamespace="urn:model.allurefw.org"
+            xmlns:ns="urn:model.allure.qameta.io"
+            targetNamespace="urn:model.allure.qameta.io"
             xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
             xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
             jaxb:extensionBindingPrefixes="xjc"
@@ -55,6 +55,19 @@
         </xsd:complexContent>
     </xsd:complexType>
 
+    <xsd:element name="testStepResult" type="ns:TestStepResult"/>
+    <xsd:complexType name="TestStepResult">
+        <xsd:complexContent>
+            <xsd:extension base="ns:ExecutableItem">
+                <xsd:sequence>
+                    <xsd:element name="status" type="ns:Status"/>
+                    <xsd:element name="statusDetails" type="ns:StatusDetails" minOccurs="0"/>
+                    <xsd:element name="parameters" type="ns:Parameters" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
     <xsd:element name="testBeforeResult" type="ns:TestBeforeResult"/>
     <xsd:complexType name="TestBeforeResult">
         <xsd:complexContent>
@@ -66,17 +79,6 @@
     <xsd:complexType name="TestAfterResult">
         <xsd:complexContent>
             <xsd:extension base="ns:ExecutableItem"/>
-        </xsd:complexContent>
-    </xsd:complexType>
-
-    <xsd:element name="testStepResult" type="ns:TestStepResult"/>
-    <xsd:complexType name="TestStepResult">
-        <xsd:complexContent>
-            <xsd:extension base="ns:ExecutableItem">
-                <xsd:sequence>
-                    <xsd:element name="parameters" type="ns:Parameters" minOccurs="0"/>
-                </xsd:sequence>
-            </xsd:extension>
         </xsd:complexContent>
     </xsd:complexType>
 

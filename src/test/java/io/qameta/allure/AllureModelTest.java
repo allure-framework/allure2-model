@@ -1,5 +1,7 @@
-package org.allurefw.model;
+package io.qameta.allure;
 
+import io.qameta.allure.model.TestCaseResult;
+import io.qameta.allure.model.TestGroupResult;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;

@@ -1,4 +1,4 @@
-package org.allurefw.model;
+package io.qameta.allure;
 
 import ru.qatools.properties.DefaultValue;
 import ru.qatools.properties.Property;

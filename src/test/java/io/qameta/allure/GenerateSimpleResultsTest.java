@@ -1,5 +1,10 @@
-package org.allurefw.model;
+package io.qameta.allure;
 
+import io.qameta.allure.model.Attachment;
+import io.qameta.allure.model.Label;
+import io.qameta.allure.model.Parameter;
+import io.qameta.allure.model.TestCaseResult;
+import io.qameta.allure.model.TestStepResult;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Rule;
 import org.junit.Test;
