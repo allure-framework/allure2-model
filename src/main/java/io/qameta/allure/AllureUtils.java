@@ -67,7 +67,7 @@ public final class AllureUtils {
         }
     }
 
-    private static ObjectMapper createMapper() {
+    public static ObjectMapper createMapper() {
         ObjectMapper mapper = new ObjectMapper()
                 .configure(MapperFeature.USE_WRAPPER_NAME_AS_PROPERTY_NAME, true)
                 .setAnnotationIntrospector(new JaxbAnnotationIntrospector(TypeFactory.defaultInstance()))

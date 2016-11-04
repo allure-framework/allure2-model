@@ -60,6 +60,7 @@
         <xsd:complexContent>
             <xsd:extension base="ns:ExecutableItem">
                 <xsd:sequence>
+                    <xsd:element name="id" type="xsd:string"/>
                     <xsd:element name="status" type="ns:Status"/>
                     <xsd:element name="statusDetails" type="ns:StatusDetails" minOccurs="0"/>
                     <xsd:element name="parameters" type="ns:Parameters" minOccurs="0"/>
