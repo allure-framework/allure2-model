@@ -1,7 +1,8 @@
 package io.qameta.allure;
 
 /**
- * @author charlie (Dmitry Baev).
+ * @author @author charlie (Dmitry Baev baev@qameta.io)
+ * @since 1.0-BETA1
  */
 public final class AllureConstants {
 

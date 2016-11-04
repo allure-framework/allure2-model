@@ -49,12 +49,15 @@
         <url>https://ci.qameta.in/</url>
     </ciManagement>
 
-    <mailingLists>
-        <mailingList>
-            <name>Allure Mailing list</name>
-            <post>feedback@allurefw.org</post>
-        </mailingList>
-    </mailingLists>
+    <developers>
+        <developer>
+            <id>charlie</id>
+            <email>baev@qameta.io</email>
+            <name>Dmitry Baev</name>
+            <organization>qameta.io</organization>
+            <organizationUrl>https://qameta.io</organizationUrl>
+        </developer>
+    </developers>
 
     <build>
         <plugins>

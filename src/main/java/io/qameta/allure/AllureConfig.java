@@ -7,8 +7,8 @@ import ru.qatools.properties.Resource;
 import java.nio.file.Path;
 
 /**
- * @author Artem Eroshenko eroshenkoam@yandex-team.ru
- *         Date: 12/13/13
+ * @author @author charlie (Dmitry Baev baev@qameta.io)
+ * @since 1.0-BETA1
  */
 @SuppressWarnings("unused")
 @Resource.Classpath("allure.properties")

@@ -22,8 +22,8 @@ import static io.qameta.allure.AllureConstants.TEST_CASE_JSON_FILE_SUFFIX;
 import static io.qameta.allure.AllureConstants.TEST_GROUP_JSON_FILE_SUFFIX;
 
 /**
- * @author Dmitry Baev charlie@yandex-team.ru
- *         Date: 20.01.14
+ * @author charlie (Dmitry Baev baev@qameta.io)
+ * @since 1.0-BETA1
  */
 public final class AllureUtils {
 
@@ -52,21 +52,6 @@ public final class AllureUtils {
         write(testCaseResult, generateTestCaseJsonFileName(), outputDirectory);
     }
 
-    private static void write(Object object, String fileName, Path outputDirectory) {
-        try {
-            Files.createDirectories(outputDirectory);
-        } catch (IOException e) {
-            LOGGER.error("Could not create output directory: {}", e);
-        }
-
-        Path file = outputDirectory.resolve(fileName);
-        try (OutputStream outputStream = Files.newOutputStream(file)) {
-            createMapper().writeValue(outputStream, object);
-        } catch (IOException e) {
-            LOGGER.error("Could not write results to {} file: {}", file, e);
-        }
-    }
-
     public static ObjectMapper createMapper() {
         ObjectMapper mapper = new ObjectMapper()
                 .configure(MapperFeature.USE_WRAPPER_NAME_AS_PROPERTY_NAME, true)
@@ -81,4 +66,18 @@ public final class AllureUtils {
         return mapper;
     }
 
+    private static void write(Object object, String fileName, Path outputDirectory) {
+        try {
+            Files.createDirectories(outputDirectory);
+        } catch (IOException e) {
+            LOGGER.error("Could not create output directory: {}", e);
+        }
+
+        Path file = outputDirectory.resolve(fileName);
+        try (OutputStream outputStream = Files.newOutputStream(file)) {
+            createMapper().writeValue(outputStream, object);
+        } catch (IOException e) {
+            LOGGER.error("Could not write results to {} file: {}", file, e);
+        }
+    }
 }
