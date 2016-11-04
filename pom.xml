@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -12,7 +10,7 @@
 
     <groupId>io.qameta.allure</groupId>
     <artifactId>model-v2</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0-BETA1</version>
 
     <properties>
         <slf4j.version>1.7.21</slf4j.version>
@@ -37,7 +35,8 @@
         <url>https://github.com/allurefw/allure2-model</url>
         <connection>scm:git@github.com:allurefw/allure2-model.git</connection>
         <developerConnection>scm:git:git@github.com:allurefw/allure2-model.git</developerConnection>
-    </scm>
+      <tag>1.0-BETA1</tag>
+  </scm>
 
     <issueManagement>
         <system>GitHub Issues</system>
