@@ -16,6 +16,14 @@
         </xsd:appinfo>
     </xsd:annotation>
 
+    <xsd:element name="testRunResult" type="ns:TestRunResult"/>
+    <xsd:complexType name="TestRunResult">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string"/>
+            <xsd:element name="name" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
     <xsd:element name="testGroupResult" type="ns:TestGroupResult"/>
     <xsd:complexType name="TestGroupResult">
         <xsd:all>

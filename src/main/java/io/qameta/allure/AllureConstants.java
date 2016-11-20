@@ -14,6 +14,10 @@ public final class AllureConstants {
 
     public static final String TEST_GROUP_JSON_FILE_GLOB = "*-testgroup.json";
 
+    public static final String TEST_RUN_JSON_FILE_SUFFIX = "-testrun.json";
+
+    public static final String TEST_RUN_JSON_FILE_GLOB = "*-testrun.json";
+
     AllureConstants() {
         throw new IllegalStateException("Don't instance AllureUtils");
     }

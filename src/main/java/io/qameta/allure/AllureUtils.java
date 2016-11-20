@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector;
 import io.qameta.allure.model.TestCaseResult;
 import io.qameta.allure.model.TestGroupResult;
+import io.qameta.allure.model.TestRunResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.qatools.properties.PropertyLoader;
@@ -20,6 +21,7 @@ import java.util.UUID;
 
 import static io.qameta.allure.AllureConstants.TEST_CASE_JSON_FILE_SUFFIX;
 import static io.qameta.allure.AllureConstants.TEST_GROUP_JSON_FILE_SUFFIX;
+import static io.qameta.allure.AllureConstants.TEST_RUN_JSON_FILE_SUFFIX;
 
 /**
  * @author charlie (Dmitry Baev baev@qameta.io)
@@ -42,6 +44,14 @@ public final class AllureUtils {
 
     public static String generateTestGroupJsonFileName() {
         return String.format("%s%s", UUID.randomUUID().toString(), TEST_GROUP_JSON_FILE_SUFFIX);
+    }
+
+    public static String generateTestRunJsonFileName() {
+        return String.format("%s%s", UUID.randomUUID().toString(), TEST_RUN_JSON_FILE_SUFFIX);
+    }
+
+    public static void write(TestRunResult testRunResult, Path outputDirectory) {
+        write(testRunResult, generateTestRunJsonFileName(), outputDirectory);
     }
 
     public static void write(TestGroupResult testGroupResult, Path outputDirectory) {
