@@ -38,7 +38,7 @@ public class GenerateSimpleResultsTest {
         return new TestCaseResult()
                 .withName(randomName())
                 .withId(UUID.randomUUID().toString())
-                .withTestGroupId(UUID.randomUUID().toString())
+                .withParentIds(UUID.randomUUID().toString())
                 .withDescription(randomDescription())
                 .withSteps(randomSteps())
                 .withAttachments(randomAttachments())

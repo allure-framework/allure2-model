@@ -28,7 +28,7 @@
     <xsd:complexType name="TestGroupResult">
         <xsd:all>
             <xsd:element name="id" type="xsd:string"/>
-            <xsd:element name="parentId" type="xsd:string"/>
+            <xsd:element name="parentIds" type="ns:Ids"/>
             <xsd:element name="type" type="xsd:string"/>
             <xsd:element name="name" type="xsd:string"/>
 
@@ -51,7 +51,7 @@
                 <xsd:sequence>
                     <xsd:element name="id" type="xsd:string"/>
                     <xsd:element name="fullName" type="xsd:string"/>
-                    <xsd:element name="testGroupId" type="xsd:string"/>
+                    <xsd:element name="parentIds" type="ns:Ids"/>
                     <xsd:element name="status" type="ns:Status"/>
                     <xsd:element name="statusDetails" type="ns:StatusDetails" minOccurs="0"/>
                     <xsd:element name="parameters" type="ns:Parameters" minOccurs="0"/>
@@ -151,6 +151,12 @@
             <xsd:enumeration value="pending"/>
         </xsd:restriction>
     </xsd:simpleType>
+
+    <xsd:complexType name="Ids">
+        <xsd:sequence>
+            <xsd:element name="parentId" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
 
     <xsd:complexType name="Befores">
         <xsd:sequence>
