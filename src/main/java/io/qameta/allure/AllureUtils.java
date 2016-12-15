@@ -23,6 +23,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.UUID;
 
+import static io.qameta.allure.AllureConstants.ATTACHMENT_FILE_SUFFIX;
 import static io.qameta.allure.AllureConstants.TEST_CASE_JSON_FILE_SUFFIX;
 import static io.qameta.allure.AllureConstants.TEST_GROUP_JSON_FILE_SUFFIX;
 import static io.qameta.allure.AllureConstants.TEST_RUN_JSON_FILE_SUFFIX;
@@ -56,7 +57,7 @@ public final class AllureUtils {
     }
 
     public static String generateAttachmentFileName() {
-        return UUID.randomUUID().toString();
+        return String.format("%s%s", UUID.randomUUID().toString(), ATTACHMENT_FILE_SUFFIX);
     }
 
     public static Attachment writeAttachment(byte[] data, String name, String type, Path outputDirectory) {

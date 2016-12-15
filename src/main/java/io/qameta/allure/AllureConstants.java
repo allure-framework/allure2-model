@@ -21,6 +21,8 @@ public final class AllureConstants {
 
     public static final String TEST_RUN_JSON_FILE_GLOB = "*-testrun.json";
 
+    public static final String ATTACHMENT_FILE_SUFFIX = "-attachment";
+
     AllureConstants() {
         throw new IllegalStateException("Don't instance AllureUtils");
     }
