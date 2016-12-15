@@ -6,22 +6,28 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector;
+import io.qameta.allure.model.Attachment;
 import io.qameta.allure.model.TestCaseResult;
 import io.qameta.allure.model.TestGroupResult;
 import io.qameta.allure.model.TestRunResult;
+import org.apache.tika.metadata.Metadata;
+import org.apache.tika.mime.MimeTypes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.qatools.properties.PropertyLoader;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.UUID;
 
+import static io.qameta.allure.AllureConstants.ATTACHMENT_FILE_SUFFIX;
 import static io.qameta.allure.AllureConstants.TEST_CASE_JSON_FILE_SUFFIX;
 import static io.qameta.allure.AllureConstants.TEST_GROUP_JSON_FILE_SUFFIX;
 import static io.qameta.allure.AllureConstants.TEST_RUN_JSON_FILE_SUFFIX;
+import static org.apache.tika.mime.MimeTypes.getDefaultMimeTypes;
 
 /**
  * @author charlie (Dmitry Baev baev@qameta.io)
@@ -48,6 +54,18 @@ public final class AllureUtils {
 
     public static String generateTestRunJsonFileName() {
         return String.format("%s%s", UUID.randomUUID().toString(), TEST_RUN_JSON_FILE_SUFFIX);
+    }
+
+    public static String generateAttachmentFileName() {
+        return String.format("%s%s", UUID.randomUUID().toString(), ATTACHMENT_FILE_SUFFIX);
+    }
+
+    public static Attachment writeAttachment(byte[] data, String name, String type, Path outputDirectory) {
+        String fileName = generateAttachmentFileName();
+        String extension = type == null ? getAttachmentExtension(data) : getExtensionByMimeType(type);
+        String source = fileName + extension;
+        write(data, source, outputDirectory);
+        return new Attachment().withName(name).withType(type).withSource(source);
     }
 
     public static void write(TestRunResult testRunResult, Path outputDirectory) {
@@ -88,6 +106,26 @@ public final class AllureUtils {
             createMapper().writeValue(outputStream, object);
         } catch (IOException e) {
             LOGGER.error("Could not write results to {} file: {}", file, e);
+        }
+    }
+
+    public static String getAttachmentExtension(byte[] data) {
+        try {
+            String type = getDefaultMimeTypes().detect(new ByteArrayInputStream(data), new Metadata()).toString();
+            return getExtensionByMimeType(type);
+        } catch (IOException e) {
+            LOGGER.warn("Cannot recognize any mime type for attachment data");
+            return "";
+        }
+    }
+
+    private static String getExtensionByMimeType(String type) {
+        MimeTypes types = getDefaultMimeTypes();
+        try {
+            return types.forName(type).getExtension();
+        } catch (Exception e) {
+            LOGGER.warn("Can't detect extension for MIME-type " + type, e);
+            return "";
         }
     }
 }
