@@ -1,5 +1,8 @@
 package io.qameta.allure;
 
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+
 /**
  * @author @author charlie (Dmitry Baev baev@qameta.io)
  * @since 1.0-BETA1
@@ -17,6 +20,8 @@ public final class AllureConstants {
     public static final String TEST_RUN_JSON_FILE_SUFFIX = "-testrun.json";
 
     public static final String TEST_RUN_JSON_FILE_GLOB = "*-testrun.json";
+
+    public static final String ATTACHMENT_FILE_SUFFIX = "-attachment";
 
     AllureConstants() {
         throw new IllegalStateException("Don't instance AllureUtils");
