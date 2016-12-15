@@ -25,8 +25,6 @@ public final class AllureConstants {
 
     public static final Charset ATTACHMENT_ENCODING = StandardCharsets.UTF_8;
 
-    public static final Integer MAX_TITLE_LENGTH = 120;
-
     AllureConstants() {
         throw new IllegalStateException("Don't instance AllureUtils");
     }
