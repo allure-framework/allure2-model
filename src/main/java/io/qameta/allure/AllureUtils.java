@@ -60,9 +60,11 @@ public final class AllureUtils {
         return String.format("%s%s", UUID.randomUUID().toString(), ATTACHMENT_FILE_SUFFIX);
     }
 
-    public static Attachment writeAttachment(byte[] data, String name, String type, Path outputDirectory) {
+    public static Attachment writeAttachment(byte[] data, String name, String passedType, Path outputDirectory) {
         String fileName = generateAttachmentFileName();
-        String extension = type == null ? getAttachmentExtension(data) : getExtensionByMimeType(type);
+        boolean isTypeProvided = passedType == null || passedType.isEmpty();
+        String type = isTypeProvided ? getAttachmentType(data) : passedType;
+        String extension = getExtensionByMimeType(type);
         String source = fileName + extension;
         write(data, source, outputDirectory);
         return new Attachment().withName(name).withType(type).withSource(source);
@@ -109,13 +111,14 @@ public final class AllureUtils {
         }
     }
 
-    public static String getAttachmentExtension(byte[] data) {
+    private static String getAttachmentType(byte[] data) {
         try {
             String type = getDefaultMimeTypes().detect(new ByteArrayInputStream(data), new Metadata()).toString();
-            return getExtensionByMimeType(type);
+            LOGGER.info("Detected {} mime type from data", type);
+            return type;
         } catch (IOException e) {
-            LOGGER.warn("Cannot recognize any mime type for attachment data");
-            return "";
+            LOGGER.warn("Cannot recognize any mime type for attachment's data: {}, assume 'text/plain'", e);
+            return "text/plain";
         }
     }
 
@@ -124,7 +127,7 @@ public final class AllureUtils {
         try {
             return types.forName(type).getExtension();
         } catch (Exception e) {
-            LOGGER.warn("Can't detect extension for MIME-type " + type, e);
+            LOGGER.warn("Can't detect extension for MIME-type {}: {}", type, e);
             return "";
         }
     }
