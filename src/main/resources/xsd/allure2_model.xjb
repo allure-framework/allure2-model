@@ -14,11 +14,6 @@
         <inheritance:implements>io.qameta.allure.model.WithAfter</inheritance:implements>
     </jaxb:bindings>
 
-    <jaxb:bindings node="//xsd:complexType[@name='TestCaseResult']">
-        <inheritance:implements>io.qameta.allure.model.WithBefore</inheritance:implements>
-        <inheritance:implements>io.qameta.allure.model.WithAfter</inheritance:implements>
-    </jaxb:bindings>
-
     <jaxb:bindings node="//xsd:complexType[@name='ExecutableItem']">
         <inheritance:implements>io.qameta.allure.model.WithSteps</inheritance:implements>
         <inheritance:implements>io.qameta.allure.model.WithAttachments</inheritance:implements>

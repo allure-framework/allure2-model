@@ -55,8 +55,6 @@
                     <xsd:element name="status" type="ns:Status"/>
                     <xsd:element name="statusDetails" type="ns:StatusDetails" minOccurs="0"/>
                     <xsd:element name="parameters" type="ns:Parameters" minOccurs="0"/>
-                    <xsd:element name="befores" type="ns:Befores" minOccurs="0"/>
-                    <xsd:element name="afters" type="ns:Afters" minOccurs="0"/>
                     <xsd:element name="labels" type="ns:Labels" minOccurs="0"/>
                     <xsd:element name="links" type="ns:Links" minOccurs="0"/>
                 </xsd:sequence>
