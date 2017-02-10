@@ -35,8 +35,8 @@
             <xsd:element name="description" type="xsd:string"/>
             <xsd:element name="descriptionHtml" type="xsd:string"/>
 
-            <xsd:element name="befores" type="ns:Fixtures"/>
-            <xsd:element name="afters" type="ns:Fixtures"/>
+            <xsd:element name="befores" type="ns:Befores"/>
+            <xsd:element name="afters" type="ns:Afters"/>
 
             <xsd:element name="links" type="ns:Links"/>
         </xsd:all>
@@ -157,9 +157,15 @@
         </xsd:sequence>
     </xsd:complexType>
 
-    <xsd:complexType name="Fixtures">
+    <xsd:complexType name="Befores">
         <xsd:sequence>
-            <xsd:element name="fixture" type="ns:FixtureResult" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="before" type="ns:FixtureResult" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="Afters">
+        <xsd:sequence>
+            <xsd:element name="after" type="ns:FixtureResult" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
     </xsd:complexType>
 
