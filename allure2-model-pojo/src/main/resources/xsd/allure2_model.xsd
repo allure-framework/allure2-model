@@ -138,9 +138,8 @@
         <xsd:restriction base="xsd:string">
             <xsd:enumeration value="failed"/>
             <xsd:enumeration value="broken"/>
-            <xsd:enumeration value="canceled"/>
             <xsd:enumeration value="passed"/>
-            <xsd:enumeration value="pending"/>
+            <xsd:enumeration value="skipped"/>
         </xsd:restriction>
     </xsd:simpleType>
 
