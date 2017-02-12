@@ -73,7 +73,7 @@ public class FileSystemResultsReader implements AllureResultsReader {
 
     private Optional<TestResult> readTestResult(Path file) {
         try (InputStream is = Files.newInputStream(file)) {
-            return Optional.of(mapper.readValue(is, TestResult.class));
+            return Optional.ofNullable(mapper.readValue(is, TestResult.class));
         } catch (IOException e) {
             errors.add(new ReadError(e, "Could not read result file {}", file));
             return Optional.empty();
@@ -82,7 +82,7 @@ public class FileSystemResultsReader implements AllureResultsReader {
 
     private Optional<TestResultContainer> readTestResultContainer(Path file) {
         try (InputStream is = Files.newInputStream(file)) {
-            return Optional.of(mapper.readValue(is, TestResultContainer.class));
+            return Optional.ofNullable(mapper.readValue(is, TestResultContainer.class));
         } catch (IOException e) {
             errors.add(new ReadError(e, "Could not read result container file {}", file));
             return Optional.empty();
