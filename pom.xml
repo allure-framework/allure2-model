@@ -18,7 +18,7 @@
 
     <groupId>io.qameta.allure</groupId>
     <artifactId>allure2-model</artifactId>
-    <version>1.0-BETA3</version>
+    <version>1.0-SNAPSHOT</version>
 
     <name>Allure2 Model</name>
 
@@ -39,7 +39,7 @@
         <url>https://github.com/allure-framework/allure2-model</url>
         <connection>scm:git@github.com:allure-framework/allure2-model.git</connection>
         <developerConnection>scm:git:git@github.com:allure-framework/allure2-model.git</developerConnection>
-        <tag>1.0-BETA3</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <issueManagement>
