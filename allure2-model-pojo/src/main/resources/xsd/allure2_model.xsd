@@ -19,7 +19,7 @@
     <xsd:element name="testRunResult" type="ns:TestRunResult"/>
     <xsd:complexType name="TestRunResult">
         <xsd:sequence>
-            <xsd:element name="id" type="xsd:string"/>
+            <xsd:element name="uuid" type="xsd:string"/>
             <xsd:element name="name" type="xsd:string"/>
         </xsd:sequence>
     </xsd:complexType>
@@ -27,7 +27,7 @@
     <xsd:element name="testResultContainer" type="ns:TestResultContainer"/>
     <xsd:complexType name="TestResultContainer">
         <xsd:all>
-            <xsd:element name="id" type="xsd:string"/>
+            <xsd:element name="uuid" type="xsd:string"/>
             <xsd:element name="name" type="xsd:string"/>
 
             <xsd:element name="children" type="ns:Ids"/>
@@ -49,7 +49,9 @@
         <xsd:complexContent>
             <xsd:extension base="ns:ExecutableItem">
                 <xsd:sequence>
-                    <xsd:element name="id" type="xsd:string"/>
+                    <xsd:element name="uuid" type="xsd:string"/>
+                    <xsd:element name="historyId" type="xsd:string"/>
+
                     <xsd:element name="fullName" type="xsd:string"/>
                     <xsd:element name="labels" type="ns:Labels" minOccurs="0"/>
                     <xsd:element name="links" type="ns:Links" minOccurs="0"/>
@@ -61,11 +63,7 @@
     <xsd:element name="stepResult" type="ns:StepResult"/>
     <xsd:complexType name="StepResult">
         <xsd:complexContent>
-            <xsd:extension base="ns:ExecutableItem">
-                <xsd:sequence>
-                    <xsd:element name="id" type="xsd:string"/>
-                </xsd:sequence>
-            </xsd:extension>
+            <xsd:extension base="ns:ExecutableItem"/>
         </xsd:complexContent>
     </xsd:complexType>
 
@@ -128,6 +126,7 @@
     <xsd:complexType name="StatusDetails">
         <xsd:all>
             <xsd:element name="known" type="xsd:boolean"/>
+            <xsd:element name="muted" type="xsd:boolean"/>
             <xsd:element name="flaky" type="xsd:boolean"/>
             <xsd:element name="message" type="xsd:string"/>
             <xsd:element name="trace" type="xsd:string"/>
@@ -148,6 +147,8 @@
             <xsd:enumeration value="scheduled"/>
             <xsd:enumeration value="running"/>
             <xsd:enumeration value="finished"/>
+            <xsd:enumeration value="pending"/>
+            <xsd:enumeration value="interrupted"/>
         </xsd:restriction>
     </xsd:simpleType>
 
