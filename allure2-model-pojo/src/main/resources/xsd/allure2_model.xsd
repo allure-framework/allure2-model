@@ -51,6 +51,7 @@
                 <xsd:sequence>
                     <xsd:element name="uuid" type="xsd:string"/>
                     <xsd:element name="historyId" type="xsd:string"/>
+                    <xsd:element name="testCaseId" type="xsd:string"/>
 
                     <xsd:element name="fullName" type="xsd:string"/>
                     <xsd:element name="labels" type="ns:Labels" minOccurs="0"/>
