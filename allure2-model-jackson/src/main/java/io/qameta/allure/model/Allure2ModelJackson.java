@@ -14,7 +14,7 @@ import static com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT;
  */
 public final class Allure2ModelJackson {
 
-    public static final String INDENT_OUTPUT_PROPERTY_NAME = "allure.model.indentOutput";
+    public static final String INDENT_OUTPUT_PROPERTY_NAME = "allure.results.indentOutput";
 
     Allure2ModelJackson() {
         throw new IllegalStateException("Do not instance Allure2ModelJackson");
