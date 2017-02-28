@@ -26,6 +26,9 @@ public final class Allure2ModelJackson {
                 .setAnnotationIntrospector(new JaxbAnnotationIntrospector(TypeFactory.defaultInstance()))
                 .setSerializationInclusion(NON_NULL)
                 .configure(INDENT_OUTPUT, Boolean.getBoolean(INDENT_OUTPUT_PROPERTY_NAME))
-                .registerModule(new SimpleModule().addDeserializer(Status.class, new StatusDeserializer()));
+                .registerModule(new SimpleModule()
+                        .addDeserializer(Status.class, new StatusDeserializer())
+                        .addDeserializer(Stage.class, new StageDeserializer())
+                );
     }
 }
