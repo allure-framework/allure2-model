@@ -13,5 +13,14 @@
         <inheritance:implements>io.qameta.allure.model.WithSteps</inheritance:implements>
         <inheritance:implements>io.qameta.allure.model.WithAttachments</inheritance:implements>
         <inheritance:implements>io.qameta.allure.model.WithParameters</inheritance:implements>
+        <inheritance:implements>io.qameta.allure.model.WithStatusDetails</inheritance:implements>
+    </jaxb:bindings>
+
+    <jaxb:bindings node="//xsd:complexType[@name='TestResult']">
+        <inheritance:implements>io.qameta.allure.model.WithLinks</inheritance:implements>
+    </jaxb:bindings>
+
+    <jaxb:bindings node="//xsd:complexType[@name='TestResultContainer']">
+        <inheritance:implements>io.qameta.allure.model.WithLinks</inheritance:implements>
     </jaxb:bindings>
 </jaxb:bindings>
