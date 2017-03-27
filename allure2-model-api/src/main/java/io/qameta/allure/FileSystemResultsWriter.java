@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Objects;
 
 import static io.qameta.allure.AllureUtils.generateTestResultContainerName;
 import static io.qameta.allure.AllureUtils.generateTestResultName;
@@ -25,13 +26,17 @@ public class FileSystemResultsWriter implements AllureResultsWriter {
     private final ObjectMapper mapper;
 
     public FileSystemResultsWriter(Path outputDirectory) {
-        this.outputDirectory = createDirectories(outputDirectory);
+        this.outputDirectory = outputDirectory;
         this.mapper = Allure2ModelJackson.createMapper();
     }
 
     @Override
     public void write(TestResult testResult) {
-        Path file = outputDirectory.resolve(generateTestResultName());
+        final String testResultName = Objects.isNull(testResult.getUuid())
+                ? generateTestResultName()
+                : generateTestResultName(testResult.getUuid());
+        createDirectories(outputDirectory);
+        Path file = outputDirectory.resolve(testResultName);
         try (OutputStream os = Files.newOutputStream(file, CREATE_NEW)) {
             mapper.writeValue(os, testResult);
         } catch (IOException e) {
@@ -41,7 +46,11 @@ public class FileSystemResultsWriter implements AllureResultsWriter {
 
     @Override
     public void write(TestResultContainer testResultContainer) {
-        Path file = outputDirectory.resolve(generateTestResultContainerName());
+        final String testResultContainerName = Objects.isNull(testResultContainer.getUuid())
+                ? generateTestResultContainerName()
+                : generateTestResultContainerName(testResultContainer.getUuid());
+        createDirectories(outputDirectory);
+        Path file = outputDirectory.resolve(testResultContainerName);
         try (OutputStream os = Files.newOutputStream(file, CREATE_NEW)) {
             mapper.writeValue(os, testResultContainer);
         } catch (IOException e) {
@@ -51,6 +60,7 @@ public class FileSystemResultsWriter implements AllureResultsWriter {
 
     @Override
     public void write(String source, InputStream attachment) {
+        createDirectories(outputDirectory);
         Path file = outputDirectory.resolve(source);
         try (InputStream is = attachment) {
             Files.copy(is, file);
@@ -59,9 +69,9 @@ public class FileSystemResultsWriter implements AllureResultsWriter {
         }
     }
 
-    private Path createDirectories(Path directory) {
+    private void createDirectories(Path directory) {
         try {
-            return Files.createDirectories(directory);
+            Files.createDirectories(directory);
         } catch (IOException e) {
             throw new AllureResultsWriteException("Could not create Allure results directory", e);
         }

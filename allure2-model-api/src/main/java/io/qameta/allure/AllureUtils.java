@@ -12,10 +12,18 @@ public final class AllureUtils {
     }
 
     public static String generateTestResultName() {
-        return UUID.randomUUID().toString() + AllureConstants.TEST_RESULT_FILE_SUFFIX;
+        return generateTestResultName(UUID.randomUUID().toString());
+    }
+
+    public static String generateTestResultName(String uuid) {
+        return uuid + AllureConstants.TEST_RESULT_FILE_SUFFIX;
     }
 
     public static String generateTestResultContainerName() {
-        return UUID.randomUUID().toString() + AllureConstants.TEST_RESULT_CONTAINER_FILE_SUFFIX;
+        return generateTestResultContainerName(UUID.randomUUID().toString());
+    }
+
+    public static String generateTestResultContainerName(String uuid) {
+        return uuid + AllureConstants.TEST_RESULT_CONTAINER_FILE_SUFFIX;
     }
 }
