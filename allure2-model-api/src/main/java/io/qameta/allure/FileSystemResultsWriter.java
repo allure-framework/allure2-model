@@ -31,7 +31,7 @@ public class FileSystemResultsWriter implements AllureResultsWriter {
     }
 
     // Based on https://superuser.com/a/748264
-    private String unsafeCharactersPattern = "[^0-9a-zA-Z_\\-.]+";
+    private String unsafeCharactersPattern = "[^0-9a-zA-Zа-яА-Я_\\-.]+";
 
     @Override
     public void write(TestResult testResult) {
