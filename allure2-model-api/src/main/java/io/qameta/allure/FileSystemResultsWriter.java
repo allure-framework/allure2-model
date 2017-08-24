@@ -30,13 +30,19 @@ public class FileSystemResultsWriter implements AllureResultsWriter {
         this.mapper = Allure2ModelJackson.createMapper();
     }
 
+    // Based on https://superuser.com/a/748264
+    private String unsafeCharactersPattern = "[^0-9a-zA-Z_\\-.]+";
+
     @Override
     public void write(TestResult testResult) {
         final String testResultName = Objects.isNull(testResult.getUuid())
                 ? generateTestResultName()
                 : generateTestResultName(testResult.getUuid());
+
+        final String safeTestResultName = testResultName.replaceAll(unsafeCharactersPattern, "_");
+
         createDirectories(outputDirectory);
-        Path file = outputDirectory.resolve(testResultName);
+        Path file = outputDirectory.resolve(safeTestResultName);
         try (OutputStream os = Files.newOutputStream(file, CREATE_NEW)) {
             mapper.writeValue(os, testResult);
         } catch (IOException e) {
@@ -49,8 +55,11 @@ public class FileSystemResultsWriter implements AllureResultsWriter {
         final String testResultContainerName = Objects.isNull(testResultContainer.getUuid())
                 ? generateTestResultContainerName()
                 : generateTestResultContainerName(testResultContainer.getUuid());
+
+        final String safeTestResultContainerName = testResultContainerName.replaceAll(unsafeCharactersPattern, "_");
+
         createDirectories(outputDirectory);
-        Path file = outputDirectory.resolve(testResultContainerName);
+        Path file = outputDirectory.resolve(safeTestResultContainerName);
         try (OutputStream os = Files.newOutputStream(file, CREATE_NEW)) {
             mapper.writeValue(os, testResultContainer);
         } catch (IOException e) {
